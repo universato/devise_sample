@@ -5,6 +5,13 @@
 <a href="/users/sign_up">sing_up</a> <br>
 <a href="/users/sign_in">sing_in</a> <br>
 
+<% if user_signed_in? %>
+  <%= current_user.email %>
+  <%= current_user.encrypted_password %>
+<% else %>
+  ログインしてません。
+<% end %>
+
 <% @users.each do |user| %>
   <% user.email %>
 <% end %>
