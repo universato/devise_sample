@@ -1,19 +1,19 @@
-<h1>Users#index</h1>
+<h1>Users#show</h1>
 <p>/app/views/users/index.html.erb</p>
 
+<%= @user.email %>
+
+<hr>
 <%= link_to "root", root_path %> <br>
 <a href="/users/sign_up">sing_up</a> <br>
 <a href="/users/sign_in">sing_in</a> <br>
-
+<a href="/users">Users#index</a> <br>
+<hr>
 <% if user_signed_in? %>
-  <%= current_user.id %>
-  <%= current_user.email %>
+  <%= link_to current_user.id, current_user %>
+  <%= link_to current_user.email, current_user %>
   <%= current_user.encrypted_password %>
   <%= link_to current_user, current_user %>
 <% else %>
   ログインしてません。
-<% end %>
-
-<% @users.each do |user| %>
-  <% user.email %>
 <% end %>
