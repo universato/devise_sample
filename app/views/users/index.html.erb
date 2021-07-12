@@ -4,3 +4,7 @@
 <%= link_to "root", root_path %> <br>
 <a href="/users/sign_up">sing_up</a> <br>
 <a href="/users/sign_in">sing_in</a> <br>
+
+<% @users.each do |user| %>
+  <% user.email %>
+<% end %>
