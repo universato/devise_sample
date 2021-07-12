@@ -5,9 +5,12 @@
 
 <hr>
 <%= link_to "root", root_path %> <br>
-<a href="/users/sign_up">sing_up</a> <br>
-<a href="/users/sign_in">sing_in</a> <br>
 <a href="/users">Users#index</a> <br>
+<a href="/users/sign_up">sing_up</a> <br>
+<a href="/users/edit">edit</a> <br>
+<a href="/users/password/new">Password New</a> <br>
+<a href="/users/password/edit">Password Edit</a> <br>
+
 <hr>
 <% if user_signed_in? %>
   <%= link_to current_user.id, current_user %>
