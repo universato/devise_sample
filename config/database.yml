@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: devise_sample_production
-  encoding: unicode
-  password: 5
+  url: <%= ENV['DATABASE_URL'] %>
