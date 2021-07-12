@@ -114,3 +114,12 @@ remote: -----> Installing dependencies using bundler 2.2.21
 Rubyで作られたアプリだと検知して、bundler 2.2.21をインストールし始める。
 Gemfile.lockに書かれたBundlerのバージョンを削除する。
 で、2.2.21 bundlerを使って、Gemfile.lockからインストールしてる。
+
+
+# Deviseで作ったユーザー
+
+```rb
+User.new(email: "foo@example.com", password: "foobar")
+```
+
+`User.new`するときは`password`でよいが、中のカラムは`encrypted_password`.
