@@ -71,3 +71,46 @@ User.column_names
   "updated_at"
 ]
 ```
+
+
+```rb
+$ git push heroku main
+(中略)
+remote: -----> Ruby app detected
+remote: -----> Installing bundler 2.2.21
+remote: -----> Removing BUNDLED WITH version in the Gemfile.lock
+remote: -----> Compiling Ruby/Rails
+remote: -----> Using Ruby version: ruby-3.0.2
+remote: -----> Installing dependencies using bundler 2.2.21
+remote:        Running: BUNDLE_WITHOUT='development:test' BUNDLE_PATH=vendor/bundle BUNDLE_BIN=vendor/bundle/bin BUNDLE_DEPLOYMENT=1 bundle install -j4
+remote:        Your bundle only supports platforms ["x86_64-darwin-20"] but your local platform
+remote:        is x86_64-linux. Add the current platform to the lockfile with `bundle lock
+remote:        --add-platform x86_64-linux` and try again.
+remote:        Bundler Output: Your bundle only supports platforms ["x86_64-darwin-20"] but your local platform
+remote:        is x86_64-linux. Add the current platform to the lockfile with `bundle lock
+remote:        --add-platform x86_64-linux` and try again.
+remote: 
+remote:  !
+remote:  !     Failed to install gems via Bundler.
+remote:  !
+```
+
+変に改行されて読みにくい。文単位で改行してみる。
+Your bundle only supports platforms ["x86_64-darwin-20"] but your local platform is x86_64-linux. 
+Add the current platform to the lockfile with `bundle lock --add-platform x86_64-linux` and try again.
+
+"x86_64-darwin-20"ってのがmacOSの1つで、Herokuの環境がLinuxで`x86_64-linux`でも使われることを指定しろって話みたい。
+nokogiriとかは、環境によって、ちょっと異なるバージョンが入るらしい。環境ごとにバージョンがあるって感じなのかな。
+
+```rb
+remote: -----> Ruby app detected
+remote: -----> Installing bundler 2.2.21
+remote: -----> Removing BUNDLED WITH version in the Gemfile.lock
+remote: -----> Compiling Ruby/Rails
+remote: -----> Using Ruby version: ruby-3.0.2
+remote: -----> Installing dependencies using bundler 2.2.21
+```
+
+Rubyで作られたアプリだと検知して、bundler 2.2.21をインストールし始める。
+Gemfile.lockに書かれたBundlerのバージョンを削除する。
+で、2.2.21 bundlerを使って、Gemfile.lockからインストールしてる。
